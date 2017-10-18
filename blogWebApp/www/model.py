@@ -1,7 +1,7 @@
-import time, uuid
-import orm
-from orm import Model, StringField, BooleanField, FloatField, TextField
 import logging; logging.basicConfig(level=logging.DEBUG)
+import time, uuid
+from orm import Model, StringField, BooleanField, FloatField, TextField
+
 def next_id():
     return '%015d%s000' % (int(time.time() * 1000), uuid.uuid4().hex)
 
@@ -41,7 +41,7 @@ class Comment(Model):
 
 
 def test():
-    logging.debug("fjlajlfa")
+    logging.debug("test.....")
     pass
     #yield from orm.create_pool(user='www-data', password='www-data', database='awesome')
     #u = User(name='Test', email='test@example.com', passwd='1234567890', image='about:blank')
