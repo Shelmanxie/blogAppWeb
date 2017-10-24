@@ -45,7 +45,7 @@ async def create_pool(loop, **kw):
 #        yield from cur.close()
 #        logging.info('rows returned: %s' % len(rs))
 #        return rs
-
+@log('dsfa','afhoa')
 async def select(sql, args, size=None):
     log(sql, args)
     global __pool
@@ -61,6 +61,7 @@ async def select(sql, args, size=None):
 # SQL语句的占位符是?，而MySQL的占位符是%s，select()函数在内部自动替换。注意要始终坚持使用带参数的SQL，而不是自己拼接SQL字符串，这样可以防止SQL注入攻击。
 # 注意到yield from将调用一个子协程（也就是在一个协程中调用另一个协程）并直接获得子协程的返回结果。
 # 如果传入size参数，就通过fetchmany()获取最多指定数量的记录，否则，通过fetchall()获取所有记录。
+
 
 
 
@@ -81,6 +82,7 @@ async def execute(sql, args, autocommit=True):
             raise
         return affected
 
+#用于输出元类中创建sql_insert语句中的占位符
 def create_args_string(num):
     L = []
     for n in range(num):

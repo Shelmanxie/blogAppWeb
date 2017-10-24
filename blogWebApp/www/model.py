@@ -1,5 +1,6 @@
 import logging; logging.basicConfig(level=logging.DEBUG)
-import time, uuid
+import time, uuid ,asyncio
+import orm
 from orm import Model, StringField, BooleanField, FloatField, TextField
 
 def next_id():
@@ -40,11 +41,17 @@ class Comment(Model):
     created_at = FloatField(default=time.time)
 
 
-def test():
-    logging.debug("test.....")
-    pass
-    #yield from orm.create_pool(user='www-data', password='www-data', database='awesome')
-    #u = User(name='Test', email='test@example.com', passwd='1234567890', image='about:blank')
-    #yield from u.save()
-if __name__ == '__main__':
-    test()
+if __name__== '__main__':
+
+    async def test():
+        await orm.create_pool(loop,user='www-data', password='www-data', db='awesome')
+        u = User(name='Test', email='test@example.com', passwd='123456780', image='about:blank')
+        await u.save()
+        a = await u.findall() #这个要打印才显示出来
+        print(a)
+
+    loop = asyncio.get_event_loop()
+    loop.run_until_complete(test())
+    orm.__pool.close()  #在关闭event loop之前，首先需要关闭连接池。
+    loop.run_until_complete(orm.__pool.wait_closed())#在关闭event loop之前，首先需要关闭连接池。
+    loop.close()
