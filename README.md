@@ -1,4 +1,4 @@
 # blogAppWeb
 
 
-a webapp writen in Python
+a webapp written in Python
