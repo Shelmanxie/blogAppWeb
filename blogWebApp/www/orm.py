@@ -45,7 +45,7 @@ async def create_pool(loop, **kw):
 #        yield from cur.close()
 #        logging.info('rows returned: %s' % len(rs))
 #        return rs
-@log('dsfa','afhoa')
+
 async def select(sql, args, size=None):
     log(sql, args)
     global __pool
