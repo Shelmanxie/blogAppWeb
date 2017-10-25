@@ -54,3 +54,7 @@ except ImportError:
     pass
 
 configs = toDict(configs)
+# 这个toDict的主要功能是添加一种取值方式a_dict.key，相当于a_dict['key']
+if __name__== '__main__':
+    print(configs)
+    print('\n %s'% configs.debug)  # 这个错误可以不管

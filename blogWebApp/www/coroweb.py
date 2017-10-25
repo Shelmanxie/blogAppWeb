@@ -37,19 +37,18 @@ def post(path):
     return decorator
 # 使用偏函数 add by shelman 2017-10-18     
 ####################################################################################
-#def main_decorator(path,method='POST'):
-#    def decorator(func):
-#        @functools.wraps(func)
-#        def wrapper(*args, **kw):
-#            return func(*args, **kw)
-#        wrapper.__method__ = method
-#        wrapper.__route__ = path
-#        return wrapper
-#    return decorator
+'''def main_decorator(path,method='POST'):
+    def decorator(func):
+        @functools.wraps(func)
+        def wrapper(*args, **kw):
+            return func(*args, **kw)
+        wrapper.__method__ = method
+        wrapper.__route__ = path
+        return wrapper
+    return decorator
 
-#get_method = functools.partial(main_decorator,method='GET')
-#post_method = functools.partial(main_decorator,method='POST')
-# delete_method = functools.partial(main_decorator,method = 'DELETE')
+get_method = functools.partial(main_decorator,method='GET')
+post_method = functools.partial(main_decorator,method='POST')'''
 ####################################################################################
 def get_required_kw_args(fn):
     args = []
@@ -90,7 +89,7 @@ def has_request_arg(fn):
         if found and (param.kind != inspect.Parameter.VAR_POSITIONAL and param.kind != inspect.Parameter.KEYWORD_ONLY and param.kind != inspect.Parameter.VAR_KEYWORD):
             raise ValueError('request parameter must be the last named parameter in function: %s%s' % (fn.__name__, str(sig)))
     return found
-
+# web 框架的封装还是不太懂   似乎明白了-_-!!!
 class RequestHandler(object):
 
     def __init__(self, app, fn):
