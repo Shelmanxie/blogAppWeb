@@ -3,7 +3,7 @@
 def consumer():
     r = ''
     while True:
-        # yield这里是阻塞态
+        # yield这里 python会将consumer函数识别为生成器，这时c = consumer()并不会真正调用函数体，而是以函数体生成了一个生成器对象实例。
         n = yield r
         if not n:
             print('not n return')

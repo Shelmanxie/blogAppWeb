@@ -30,22 +30,22 @@ async def create_pool(loop, **kw):
     )
 
 # Select
-# 要执行SELECT语句，我们用select函数执行，需要传入SQL语句和SQL参数：
-# @asyncio.coroutine
-# def select(sql, args, size=None):
-#    log(sql, args)
-#    global __pool
-#    with (yield from __pool) as conn:
-#        cur = yield from conn.cursor(aiomysql.DictCursor)
-#        yield from cur.execute(sql.replace('?', '%s'), args or ())
-#        if size:
-#            rs = yield from cur.fetchmany(size)
-#        else:
-#            rs = yield from cur.fetchall()
-#        yield from cur.close()
-#        logging.info('rows returned: %s' % len(rs))
-#        return rs
-
+ # 要执行SELECT语句，我们用select函数执行，需要传入SQL语句和SQL参数：
+'''@asyncio.coroutine
+ def select(sql, args, size=None):
+    log(sql, args)
+    global __pool
+    with (yield from __pool) as conn:
+        cur = yield from conn.cursor(aiomysql.DictCursor)
+        yield from cur.execute(sql.replace('?', '%s'), args or ())
+        if size:
+            rs = yield from cur.fetchmany(size)
+        else:
+            rs = yield from cur.fetchall()
+        yield from cur.close()
+        logging.info('rows returned: %s' % len(rs))
+        return rs
+'''
 async def select(sql, args, size=None):
     log(sql, args)
     global __pool
